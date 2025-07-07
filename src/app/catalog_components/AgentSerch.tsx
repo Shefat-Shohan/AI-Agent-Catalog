@@ -6,7 +6,19 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Button } from "@/components/ui/button";
 import { CatalogCard } from "./catalogCard";
-import { AgentCatalogProps } from "@/data/type";
+
+type Agent = {
+  id: string;
+  name: string;
+  description: string;
+  status: string;
+  category: string;
+  pricingModel: string;
+};
+
+interface AgentCatalogProps {
+  agents: Agent[];
+}
 
 export default function AgentSearch({ agents }: AgentCatalogProps) {
   const [search, setSearch] = useState("");
@@ -33,11 +45,15 @@ export default function AgentSearch({ agents }: AgentCatalogProps) {
         agent.name.toLowerCase().includes(search.toLowerCase()) ||
         agent.description.toLowerCase().includes(search.toLowerCase());
 
-      const matchesStatus = status.length === 0 || status.includes(agent.status);
-      const matchesCategory = category.length === 0 || category.includes(agent.category);
+      const matchesStatus =
+        status.length === 0 || status.includes(agent.status);
+      const matchesCategory =
+        category.length === 0 || category.includes(agent.category);
       const matchesPricing = !pricing || agent.pricingModel === pricing;
 
-      return matchesSearch && matchesStatus && matchesCategory && matchesPricing;
+      return (
+        matchesSearch && matchesStatus && matchesCategory && matchesPricing
+      );
     });
   }, [agents, search, status, category, pricing]);
 

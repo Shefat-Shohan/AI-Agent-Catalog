@@ -15,6 +15,7 @@ type Agent = {
 interface AgentCardProps {
   agent: Agent;
 }
+
 export function CatalogCard({ agent }: AgentCardProps) {
   return (
     <motion.div
