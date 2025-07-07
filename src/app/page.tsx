@@ -1,6 +1,4 @@
-import { div } from "framer-motion/client";
 import Catalog from "./catalog_components/Catalog";
-import LoginForm from "./catalog_components/LoginForm";
 
 export default function Home() {
   return (
