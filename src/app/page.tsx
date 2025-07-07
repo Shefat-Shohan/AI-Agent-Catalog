@@ -1,3 +1,4 @@
+"use client";
 import Catalog from "./catalog_components/Catalog";
 
 export default function Home() {
